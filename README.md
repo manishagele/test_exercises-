@@ -1,4 +1,4 @@
-# BlueSpurs Interview Test
+
 
 ## Task 1
 
