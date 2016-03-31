@@ -43,21 +43,27 @@ public class ProductController {
 			product = dataServices.getLowestPriceProduct(productName);
 		} catch (Exception e) {
 			String error = e.getMessage();
-			log.error("An error has occurred while obtaining the product: " + error);	
+			log.error("An error has occurred while obtaining the product: " + error);
 		}
 		return product;
 
 	}
-	
 
+	/**
+	 * Sample request = POST /product/alert { "productName": "ipad", "email":
+	 * "someone@somewhere.com" }
+	 * 
+	 * @param product
+	 * @return
+	 */
 	@RequestMapping(value = "/alert", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public Product addProduct(@RequestBody Product product) {
-		
+	public Product addProduct(@RequestBody String productName, String email) {
+
 		try {
-			dataServices.addProduct(product);
+			dataServices.addProduct(productName, email);
 		} catch (Exception e) {
 			String error = e.getMessage();
-			log.error("An error has occurred while adding the product: " + error);	
+			log.error("An error has occurred while adding the product: " + error);
 		}
 		return product;
 
